@@ -1,10 +1,11 @@
 import { AxiosService } from '../services/AxiosService';
 import { makeAutoObservable, runInAction } from 'mobx';
+import { Story } from './Story';
 
 export class StoryStore {
   service: AxiosService;
   isLoadingStories = false;
-  stories: AxiosContentInstance[] = []
+  stories: Story[] = [];
 
   constructor() {
     makeAutoObservable(this);
@@ -21,7 +22,7 @@ export class StoryStore {
     const data: AxiosContentInstance[] = await Promise.all(contentCalls);
 
     runInAction(() => {
-      this.stories = data
+      this.stories = data.map((story) => new Story(story))
     });
   }
 }
