@@ -1,6 +1,6 @@
 // types for data returned from axios apis
 
-interface Size {
+interface Crop {
   width: number;
   height: number;
   url: string;
@@ -10,9 +10,9 @@ interface PrimaryImage {
   id: string;
   alt_text: string;
   crops: {
-    '1x1': { sizes: Size[] };
-    '4x3': { sizes: Size[] };
-    '16x9': { sizes: Size[] };
+    '1x1': { sizes: Crop[] };
+    '4x3': { sizes: Crop[] };
+    '16x9': { sizes: Crop[] };
   };
   caption: {
     blocks: Block[];
@@ -45,6 +45,11 @@ interface Entity {
   data: { url: string };
 }
 
+interface Topic {
+  id: string;
+  name: string;
+}
+
 interface AxiosStream {
   count: number;
   next: string | null;
@@ -54,9 +59,10 @@ interface AxiosStream {
 
 interface AxiosContentInstance {
   id: string;
-  authors: { display_name: string };
+  authors: [{ display_name: string }];
   headline: string;
   published_date: string;
-  blocks: Block[];
+  blocks: { blocks: Block[] };
   primary_image: PrimaryImage;
+  topics: Topic[] | null;
 }
