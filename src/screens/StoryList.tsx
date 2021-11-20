@@ -39,5 +39,3 @@ export const StoryList = observer(() => {
     </Screen>
   );
 });
-
-export default StoryList;

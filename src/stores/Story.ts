@@ -36,4 +36,14 @@ export class Story {
 
     return this.contentInstance.authors[0].display_name;
   }
+
+  get primaryTopicName(): string | null {
+    const topics = this.contentInstance.topics;
+
+    if (topics === null || topics.length === 0) {
+      return null;
+    }
+
+    return topics[0].name;
+  }
 }

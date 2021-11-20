@@ -25,4 +25,12 @@ export class StoryStore {
       this.stories = data.map((story) => new Story(story))
     });
   }
+
+  getStory(id: string): Story | null {
+    return (
+      this.stories.find(story => {
+        return id === story.id;
+      }) || null
+    );
+  }
 }

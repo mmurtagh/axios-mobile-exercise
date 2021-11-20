@@ -1,10 +1,12 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 
 import { Story } from '../stores/Story';
 import styled from 'styled-components/native';
 import { spacing } from '../utils/styling'
 import { Card, Image, Headline, Caption } from './components';
+import { RootStackParamList } from '..';
 
 const Container = styled.View`
   flex: 3;
@@ -12,12 +14,12 @@ const Container = styled.View`
 `;
 
 const ThumbnailImage = styled(Image)`
+  flex: 2;
   align-self: center;
 `;
 
 const Author = styled(Caption)`
   margin-top: ${spacing('sm')};
-  font-weight: bold;
 `;
 
 const ListItem = styled(Card)`
@@ -28,9 +30,10 @@ const Touchable = styled.TouchableOpacity``;
 
 export const StoryListItem = observer(({ story }: { story: Story }) => {
   const image: Crop | null = story.getPrimaryImageCrop('4x3');
+  const navigation: NavigationProp<RootStackParamList> = useNavigation();
 
   return (
-    <Touchable onPress={() => console.log('hey buddy')}>
+    <Touchable onPress={() => navigation.navigate('StoryDetail', { id: story.id })}>
       <ListItem>
         <ThumbnailImage aspectRatio={4 / 3} source={{ uri: image?.url }} />
         <Container>

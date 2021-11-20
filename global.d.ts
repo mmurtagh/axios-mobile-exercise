@@ -57,6 +57,9 @@ interface AxiosStream {
   results: string[];
 }
 
+/**
+ * Represents a content instance returned from the Axios content API
+ */
 interface AxiosContentInstance {
   id: string;
   authors: [{ display_name: string }];
