@@ -1,13 +1,19 @@
 import React, { useContext, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import styled from 'styled-components/native';
+import { FlatList } from 'react-native';
 
-import { Screen } from '../components';
+import { Screen } from '../components/components';
 import { StoryStoreContext } from '../index';
+import { Story } from '../stores/Story';
+import { StoryListItem } from '../components/StoryListItem';
+import { spacing } from '../utils/styling';
 
-const Text = styled.Text`
-  font-size: 15px;
-  border-bottom-width: 2px;
+const Separator = styled.View`
+  padding-top: ${spacing('sm')}
+`
+const Container = styled.View`
+  padding-horizontal: ${spacing('lg')};
 `
 
 export const StoryList = observer(() => {
@@ -17,11 +23,19 @@ export const StoryList = observer(() => {
     store.loadMostRecentStories();
   }, [store]);
 
+  const renderItem = ({ item }: { item: Story }) => {
+    return <StoryListItem story={item} />;
+  };
+
   return (
     <Screen>
-      {store.stories.map((story) => {
-        return <Text key={story.id}>{story.headline}</Text>
-      })}
+      <Container>
+        <FlatList
+          ItemSeparatorComponent={Separator}
+          data={store.stories}
+          renderItem={renderItem}
+        />
+      </Container>
     </Screen>
   );
 });
