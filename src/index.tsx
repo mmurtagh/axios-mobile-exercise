@@ -1,20 +1,32 @@
-import React from 'react';
-import { SafeAreaView, StyleSheet, Text } from 'react-native';
 
-const App: React.FC = () => {
-  return (
-    <SafeAreaView style={styles.safeArea}>
-      <Text>Hello from Axios</Text>
-    </SafeAreaView>
-  );
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import { StoryList } from './screens/StoryList';
+import { StoryStore } from './stores/StoryStore';
+
+export type RootStackParamList = {
+  StoryList: undefined;
 };
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
-const styles = StyleSheet.create({
-  safeArea: {
-    alignItems: 'center',
-    flex: 1,
-    justifyContent: 'center',
-  },
-});
+export const StoryStoreContext = React.createContext<StoryStore>(
+  new StoryStore(),
+);
 
-export default App;
+export default function App() {
+  return (
+    <StoryStoreContext.Provider value={new StoryStore()}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="StoryList"
+            component={StoryList}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </StoryStoreContext.Provider>
+  );
+}
