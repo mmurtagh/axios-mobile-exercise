@@ -31,13 +31,13 @@ const Touchable = styled.TouchableOpacity``;
 
 export const StoryListItem = observer(({ story }: { story: Story }) => {
   const { width } = useWindowDimensions();
-  const image: Crop | null = story.getPrimaryImageCrop('4x3', width / 2);
+  const imageUrl: string = story.getImage('4x3', width / 2);
   const navigation: NavigationProp<RootStackParamList> = useNavigation();
 
   return (
     <Touchable onPress={() => navigation.navigate('StoryDetail', { id: story.id })}>
       <ListItem>
-        <ThumbnailImage aspectRatio={4 / 3} source={{ uri: image?.url }} />
+        <ThumbnailImage aspectRatio={4 / 3} source={{ uri: imageUrl }} />
         <Container>
           <Paragraph>{story.headline}</Paragraph>
           <Author>{story.author}</Author>

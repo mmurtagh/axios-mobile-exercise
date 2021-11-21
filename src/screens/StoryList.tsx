@@ -17,11 +17,6 @@ const Header = styled.View`
   padding-top: ${spacing()}
 `
 
-const Container = styled.View`
-  margin-top: ${spacing()};
-  padding-horizontal: ${spacing('lg')};
-`
-
 const RefreshControl = styled.RefreshControl``
 
 export const StoryList = observer(() => {
@@ -39,13 +34,9 @@ export const StoryList = observer(() => {
   const onRefresh = async () => {
     setIsRefreshing(true)
     
-    try {
-      await store.loadMostRecentStories()
-
-      setIsRefreshing(false);
-    } catch {
-      setIsRefreshing(false);
-    }
+    store.loadMostRecentStories()
+      .then(() => setIsRefreshing(false))
+      .catch(() => setIsRefreshing(false))
   }
 
   return (

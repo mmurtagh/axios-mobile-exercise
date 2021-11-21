@@ -1,4 +1,4 @@
-import { makeAutoObservable } from 'mobx';
+import { makeAutoObservable, toJS } from 'mobx';
 import dayjs from 'dayjs';
 
 export enum SupportedEntityType {
@@ -14,7 +14,7 @@ export enum SupportedInlineStyle {
   BOLD = 'BOLD',
 }
 
-function sanitzeContentInstance (_contentInstance: AxiosContentInstance): AxiosContentInstance {
+function sanitizeContentInstance (_contentInstance: AxiosContentInstance): AxiosContentInstance {
   const contentInstance = { ..._contentInstance }
   const {
     blocks: {
@@ -30,38 +30,6 @@ function sanitzeContentInstance (_contentInstance: AxiosContentInstance): AxiosC
     return supportedTypes.includes(type)
   })
 
-  // Find the indices of all unsupported entity types
-  const unsupportedEntityIndices = entityMap.reduce((acc, { type }, index) => {
-
-    const supportedTypes: string[] = Object.values(SupportedEntityType);
-
-    if (supportedTypes.includes(type)) {
-      acc.add(index);
-    }
-
-    return acc;
-  }, new Set())
-
-  // Remove unsupported entity types
-  contentInstance.blocks.entityMap = entityMap.filter((entity, index) => {
-    return !unsupportedEntityIndices.has(index)
-  })
-
-  // Filter out all inline styles with unsupported InlineStyle style
-  // and filter out all entity ranges refering to unsupported entities
-  blocks.forEach((block) => {
-    const { inlineStyleRanges, entityRanges } = block
-    const supportedStyles: string[] = Object.values(SupportedInlineStyle);
-
-    block.inlineStyleRanges = inlineStyleRanges.filter(({ style }) => {
-      return supportedStyles.includes(style);
-    })
-
-    block.entityRanges = entityRanges.filter(({ key }) => {
-      return !unsupportedEntityIndices.has(key);
-    })
-  })
-
   return contentInstance
 }
 
@@ -69,8 +37,8 @@ export class Story {
   contentInstance: AxiosContentInstance;
 
   constructor(contentInstance: AxiosContentInstance) {
-    this.contentInstance = sanitzeContentInstance(contentInstance);
-    makeAutoObservable(this, { contentInstance: false });
+    this.contentInstance = sanitizeContentInstance(contentInstance);
+    makeAutoObservable(this);
   }
 
   get headline(): string {
@@ -81,28 +49,28 @@ export class Story {
     return dayjs(this.contentInstance.published_date);
   }
 
-  getPrimaryImageCrop(ratio: '1x1' | '4x3' | '16x9', width?: number): Crop | null {
+  getImage(ratio: '1x1' | '4x3' | '16x9', width: number): string | null {
     let image = this.contentInstance.primary_image
 
-    if (image === null) {
+    if (image === null || !image.crops[ratio].sizes) {
       image = this.contentInstance.social_image;
     }
 
     if (image === null) {
       return null
     }
-
-    const sizes = image.crops[ratio].sizes
+    
+    const { sizes } = image.crops[ratio];
 
     const bestMatch = sizes.reduce((acc, crop) => {
-      if (crop.width > width && acc.width > crop.width) {
+      if (crop.width >= width && acc.width > crop.width) {
         return crop
       }
 
       return acc;
     }, sizes[0])
 
-    return bestMatch;
+    return bestMatch.url;
   }
 
   get id(): string {

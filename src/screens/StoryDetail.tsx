@@ -40,7 +40,7 @@ export const StoryDetail = observer(({ navigation, route }: Props) => {
   const { width } = useWindowDimensions();
   const store = useContext(StoryStoreContext);
   const story = store.getStory(route.params.id);
-  const image: Crop | null = story.getPrimaryImageCrop('16x9', width);
+  const imageUrl: string = story.getImage('16x9', width);
 
   return (
     <Screen>
@@ -48,7 +48,7 @@ export const StoryDetail = observer(({ navigation, route }: Props) => {
         <HeadlineCard>
           <StoryHeadline>{story.headline}</StoryHeadline>
           <Break />
-          <Image aspectRatio={16 / 9} source={{ uri: image?.url }} />
+          <Image aspectRatio={16 / 9} source={{ uri: imageUrl }} />
           <DetailCaption story={story} />
         </HeadlineCard>
         <BlockTextCard>

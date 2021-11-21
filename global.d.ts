@@ -61,7 +61,7 @@ interface AxiosStream {
  */
 interface AxiosContentInstance {
   id: string;
-  authors: [{ display_name: string }];
+  authors: { display_name: string }[];
   headline: string;
   published_date: string;
   blocks: { blocks: Block[], entityMap: Entity[] };
