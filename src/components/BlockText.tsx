@@ -15,10 +15,10 @@ const Container = styled.View`
 `
 
 const Bullet = styled.View`
-  width: 10px;
-  height: 10px;
-  border-radius: 5px;
-  background-color: #000;
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background-color: #444;
   margin-top: ${spacing('sm')};
   margin-right: ${spacing()};
 `

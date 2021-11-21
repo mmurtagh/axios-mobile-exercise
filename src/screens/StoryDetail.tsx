@@ -2,30 +2,28 @@ import React, { useContext } from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { observer } from 'mobx-react-lite';
 import styled from 'styled-components/native';
-import { useWindowDimensions } from 'react-native'
+import { Linking, useWindowDimensions } from 'react-native'
 
 import { RootStackParamList, StoryStoreContext } from '../index';
-import { Headline, Screen, Card, Image } from '../components/components';
+import { Button, Headline, Screen, Card, Image, Paragraph } from '../components/components';
 import { DetailCaption } from '../components/DetailCaption';
 import { BlockText } from '../components/BlockText';
-import { spacing } from '../utils/styling';
+import { fontColor, backdropColor, spacing } from '../utils/styling';
 
 export type Props = NativeStackScreenProps<RootStackParamList, 'StoryDetail'>;
+
+const axiosUrl = 'https://www.axios.com/'
 
 const HeadlineCard = styled(Card)`
   margin-top: ${spacing()}
 `
-
-const Container = styled.View`
-  background-color: green;
-`
-
 const ScrollView = styled.ScrollView`
-  background-color: #d3d3d3;
+  background-color: ${backdropColor};
 `
 
 const Break = styled.View`
   border-bottom-width: 1px;
+  border-color: ${fontColor}
   margin-vertical: ${spacing('lg')}
 `;
 
@@ -57,6 +55,7 @@ export const StoryDetail = observer(({ navigation, route }: Props) => {
           {story.blocks.map((block) => {
             return <BlockText key={block.key} block={block} entityMap={story.entityMap} />
           })}
+          <Button icon="open-in-new" title="Visit Axios.com" onPress={() => Linking.openURL(axiosUrl)} />
         </BlockTextCard>
       </ScrollView>
     </Screen>

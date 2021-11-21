@@ -35,3 +35,8 @@ export function fontSize (size: StyleSize = 'md') {
 
   return value;
 }
+
+export const fontColor = '#444';
+export const backdropColor = '#d3d3d3';
+export const surfaceColor = '#fff';
+export const primary = '#0096c7';

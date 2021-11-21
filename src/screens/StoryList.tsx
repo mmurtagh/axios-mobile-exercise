@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import styled from 'styled-components/native';
 import { FlatList } from 'react-native';
@@ -22,8 +22,11 @@ const Container = styled.View`
   padding-horizontal: ${spacing('lg')};
 `
 
+const RefreshControl = styled.RefreshControl``
+
 export const StoryList = observer(() => {
   const store = useContext(StoryStoreContext);
+  const [ isRefreshing, setIsRefreshing ] = useState(false)
 
   useEffect(() => {
     store.loadMostRecentStories();
@@ -33,6 +36,18 @@ export const StoryList = observer(() => {
     return <StoryListItem story={item} />;
   };
 
+  const onRefresh = async () => {
+    setIsRefreshing(true)
+    
+    try {
+      await store.loadMostRecentStories()
+
+      setIsRefreshing(false);
+    } catch {
+      setIsRefreshing(false);
+    }
+  }
+
   return (
     <Screen>
       <FlatList
@@ -41,6 +56,12 @@ export const StoryList = observer(() => {
         renderItem={renderItem}
         ListHeaderComponent={Header}
         ListFooterComponent={Header}
+        refreshControl={
+          <RefreshControl
+            refreshing={isRefreshing}
+            onRefresh={onRefresh}
+          />
+        }
       />
     </Screen>
   );

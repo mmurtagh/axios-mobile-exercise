@@ -15,7 +15,7 @@ const Container = styled.View`
 `;
 
 const ThumbnailImage = styled(Image)`
-  flex: 2;
+  flex: 2;  
   align-self: center;
 `;
 
@@ -33,8 +33,6 @@ export const StoryListItem = observer(({ story }: { story: Story }) => {
   const { width } = useWindowDimensions();
   const image: Crop | null = story.getPrimaryImageCrop('4x3', width / 2);
   const navigation: NavigationProp<RootStackParamList> = useNavigation();
-
-  console.log(image)
 
   return (
     <Touchable onPress={() => navigation.navigate('StoryDetail', { id: story.id })}>

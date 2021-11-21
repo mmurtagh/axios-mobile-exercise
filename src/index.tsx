@@ -2,12 +2,12 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import styled from 'styled-components/native';
-import { Icon } from './components/components';
+import { Icon, Paragraph } from './components/components';
 
 import { StoryList } from './screens/StoryList';
 import { StoryStore } from './stores/StoryStore';
 import StoryDetail from './screens/StoryDetail';
+import { ThemeProvider } from 'styled-components/native';
 
 export type RootStackParamList = {
   StoryList: undefined;
@@ -28,14 +28,14 @@ export default function App() {
             name="StoryList"
             component={StoryList}
             options={{
-              title: 'Latest Stories',
+              headerTitle: () => <Paragraph>Latest Stories</Paragraph>,
             }}
           />
           <Stack.Screen
             name="StoryDetail"
             component={StoryDetail}
             options={({ navigation }) => ({
-              title: 'Story Detail',
+              headerTitle: () => <Paragraph>Story Detail</Paragraph>,
               headerLeft: () => <Icon size={40} name="chevron-left" onPress={() => navigation.goBack()}/>,
             })}
           />
