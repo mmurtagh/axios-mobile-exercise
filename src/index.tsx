@@ -27,13 +27,15 @@ export default function App() {
           <Stack.Screen
             name="StoryList"
             component={StoryList}
-            options={{ headerShown: false }}
+            options={{
+              title: 'Latest Stories',
+            }}
           />
           <Stack.Screen
             name="StoryDetail"
             component={StoryDetail}
             options={({ navigation }) => ({
-              title: null,
+              title: 'Story Detail',
               headerLeft: () => <Icon size={40} name="chevron-left" onPress={() => navigation.goBack()}/>,
             })}
           />

@@ -1,12 +1,11 @@
 // types for data returned from axios apis
-
 interface Crop {
   width: number;
   height: number;
   url: string;
 }
 
-interface PrimaryImage {
+interface AxiosImage {
   id: string;
   alt_text: string;
   crops: {
@@ -23,13 +22,13 @@ interface PrimaryImage {
 interface Block {
   key: string;
   text: string;
-  type: 'unstyled' | 'unordered-list-item';
+  type: string;
   inlineStyleRanges: InlineStyleRange[];
   entityRanges: EntityRange[];
 }
 
 interface InlineStyleRange {
-  style: 'BOLD';
+  style: string;
   length: number;
   offset: number;
 }
@@ -41,7 +40,7 @@ interface EntityRange {
 }
 
 interface Entity {
-  type: 'LINK';
+  type: string;
   data: { url: string };
 }
 
@@ -65,7 +64,8 @@ interface AxiosContentInstance {
   authors: [{ display_name: string }];
   headline: string;
   published_date: string;
-  blocks: { blocks: Block[] };
-  primary_image: PrimaryImage;
+  blocks: { blocks: Block[], entityMap: Entity[] };
+  primary_image: AxiosImage | null;
+  social_image: AxiosImage | null;
   topics: Topic[] | null;
 }

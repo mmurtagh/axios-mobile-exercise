@@ -12,7 +12,13 @@ import { spacing } from '../utils/styling';
 const Separator = styled.View`
   padding-top: ${spacing('sm')}
 `
+
+const Header = styled.View`
+  padding-top: ${spacing()}
+`
+
 const Container = styled.View`
+  margin-top: ${spacing()};
   padding-horizontal: ${spacing('lg')};
 `
 
@@ -29,13 +35,13 @@ export const StoryList = observer(() => {
 
   return (
     <Screen>
-      <Container>
-        <FlatList
-          ItemSeparatorComponent={Separator}
-          data={store.stories}
-          renderItem={renderItem}
-        />
-      </Container>
+      <FlatList
+        ItemSeparatorComponent={Separator}
+        data={store.stories}
+        renderItem={renderItem}
+        ListHeaderComponent={Header}
+        ListFooterComponent={Header}
+      />
     </Screen>
   );
 });

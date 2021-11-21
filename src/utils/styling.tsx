@@ -1,4 +1,6 @@
-export function spacing(size: 'sm' | 'md' | 'lg' = 'md') {
+type StyleSize = 'sm' | 'md' | 'lg'
+
+export function spacing(size: StyleSize = 'md') {
   const defaultSpacing = 10;
 
   let value;
@@ -15,4 +17,21 @@ export function spacing(size: 'sm' | 'md' | 'lg' = 'md') {
   }
 
   return `${value}px`;
+}
+
+export function fontSize (size: StyleSize = 'md') {
+  let value;
+  switch (size) {
+    case 'sm':
+      value = '12px';
+      break;
+    case 'lg':
+      value = '24px';
+      break;
+    default:
+      value = '16px';
+      break;
+  }
+
+  return value;
 }
