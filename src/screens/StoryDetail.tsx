@@ -5,11 +5,10 @@ import styled from 'styled-components/native';
 import { Linking } from 'react-native'
 
 import { RootStackParamList, StoryStoreContext } from '../index';
-import { Button, Headline, Screen, Card, Image, Paragraph } from '../components/components';
+import { Button, Headline, Screen, Card, Image, Caption } from '../components/components';
 import { DetailCaption } from '../components/DetailCaption';
 import { BlockText } from '../components/BlockText';
 import { fontColor, backdropColor, spacing } from '../utils/styling';
-import { ImageSourcePropType } from 'react-native';
 
 export type Props = NativeStackScreenProps<RootStackParamList, 'StoryDetail'>;
 
@@ -37,6 +36,10 @@ const StoryHeadline = styled(Headline)`
   text-align: center;
   font-weight: bold;
 `
+
+const Author = styled(Caption)`
+  margin-top: ${spacing('sm')};
+`;
 
 /** 
  * @name: StoryDetail
@@ -77,6 +80,7 @@ export const StoryDetail = observer(({ route: { params: { id } } }: Props) => {
             source={imageSources}
           />
           <DetailCaption story={story} />
+          <Author testID="author">{story.author}</Author>
         </HeadlineCard>
         <BlockTextCard testID="block-text-card">
           {story.blocks.map((block) => {

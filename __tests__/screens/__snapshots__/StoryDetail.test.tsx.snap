@@ -145,6 +145,21 @@ exports[`StoryDetail snapshot 1`] = `
           >
             4 months ago - Science
           </Text>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#444",
+                  "fontFamily": "Helvetica",
+                  "fontSize": 12,
+                  "marginTop": 5,
+                },
+              ]
+            }
+            testID="author"
+          >
+            Foo Barrington
+          </Text>
         </View>
         <View
           style={

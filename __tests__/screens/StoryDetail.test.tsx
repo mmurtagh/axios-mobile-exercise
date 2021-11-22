@@ -67,4 +67,10 @@ describe('StoryDetail', () => {
 
    expect(getByTestId('block-text-card').children.length).toBe(story.blocks.length + 1);
  })
+
+ test('authot', () => {
+  const { getByTestId } = render(<StoryDetail navigation={mockNavigation} route={mockRoute} />);
+
+  expect(getByTestId('author').children[0]).toBe(story.author);
+})
 });
