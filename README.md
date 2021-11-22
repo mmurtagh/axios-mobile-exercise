@@ -25,10 +25,10 @@ I used `mobx` and `mobx-react-lite` for state management in this project. I main
 This app should be accessible via voiceover/talkback. I enhanced the default accessibility of the app in the following ways:
 
 * Added `header` roles to the nav headers and headline within `StoryDetail`
-* Customized the `accessibility-label` of `StoryListIem` components to tell the user where they are within the list, and rephrased the text that is read relating to the heading and author
+* Customized the `accessibilityLabel` of `StoryListIem` components to tell the user where they are within the list, and rephrased the text that is read relating to the heading and author
   * e.g. `5 of 20: Target to close stores on Thanksgiving for good by Ivana Saric`
-* Added `image` role and `accessibility-label` to the image shown in the `StoryDetail`
-* Added `button` role and `accessibility-label` to the back icon on `StoryDetail`. This tells the user that this element is clickable and will return them to the story list.
+* Added `image` role and `accessibilityLabel` to the image shown in the `StoryDetail`
+* Added `button` role and `accessibilityLabel` to the back icon on `StoryDetail`. This tells the user that this element is clickable and will return them to the story list.
 
 
 ## Additional Features
