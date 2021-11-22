@@ -26,10 +26,6 @@ jest.mock('react', () => {
   }
 })
 
-jest.mock('react-native/Libraries/Utilities/useWindowDimensions', () => ({
-  default: () => ({ width: 200 }),
-}));
-
 describe('StoryDetail', () => {
   beforeEach(() => {
     (mockStore.loadMostRecentStories as jest.Mock).mockClear();
@@ -53,9 +49,9 @@ describe('StoryDetail', () => {
 
   test('image - 16x9 aspect ratio', () => {
     const { getByTestId } = render(<StoryDetail navigation={mockNavigation} route={mockRoute} />);
-    const imageUrl = story.getImage('16x9', 200);
+    const sources = story.getImageSources('16x9');
 
-    expect(getByTestId('image').props.source.uri).toBe(imageUrl)
+    expect(getByTestId('image').props.source).toStrictEqual(sources)
   })
 
   test('link off button', () => {

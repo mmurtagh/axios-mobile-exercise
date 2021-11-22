@@ -18,10 +18,6 @@ jest.mock('@react-navigation/native', () => {
   };
 });
 
-jest.mock('react-native/Libraries/Utilities/useWindowDimensions', () => ({
-  default: () => ({ width: 200 }),
-}));
-
 describe('StoryListItem', () => {
   afterEach(() => {
     clearTimers();
@@ -48,12 +44,11 @@ describe('StoryListItem', () => {
     expect(getByTestId('author').children[0]).toBe(story.author);
   })
 
-  test('image - 4x3 aspect ratio and half window req', () => {
+  test('image - 4x3 aspect ratio', () => {
     const story = new Story(contentInstance);
     const { getByTestId } = render(<StoryListItem story={story} totalStories={20} index={0}/>)
-    // width is mocked to 200 but StoryListItem requests 1/2 screen width
-    const imageUrl = story.getImage('4x3', 100);
+    const sources = story.getImageSources('4x3');
 
-    expect(getByTestId('thumbnail-image').props.source.uri).toBe(imageUrl)
+    expect(getByTestId('thumbnail-image').props.source).toStrictEqual(sources)
   })
 });

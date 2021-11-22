@@ -1,7 +1,6 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { useWindowDimensions } from 'react-native';
 import styled from 'styled-components/native';
 
 import { Story } from '../stores/Story';
@@ -40,8 +39,7 @@ export const StoryListItem = observer((
   { story, index, totalStories }:
   { story: Story, index: number, totalStories: number}
 ) => {
-  const { width } = useWindowDimensions();
-  const imageUrl: string = story.getImage('4x3', width / 2);
+  const imageSources: Crop[] = story.getImageSources('4x3');
   const navigation: NavigationProp<RootStackParamList> = useNavigation();
 
   const accessibilityLabel = `${index + 1} of ${totalStories}: ${story.headline} by ${story.author}`
@@ -52,7 +50,11 @@ export const StoryListItem = observer((
       onPress={() => navigation.navigate('StoryDetail', { id: story.id })}
     >
       <ListItem>
-        <ThumbnailImage testID="thumbnail-image" aspectRatio={4 / 3} source={{ uri: imageUrl }} />
+        <ThumbnailImage
+          testID="thumbnail-image"
+          aspectRatio={4 / 3}
+          source={imageSources}
+        />
         <Container>
           <Paragraph testID="headline">{story.headline}</Paragraph>
           <Author testID="author">{story.author}</Author>

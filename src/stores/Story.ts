@@ -54,12 +54,11 @@ export class Story {
   }
 
   /** 
-   * @name getImage
-   * @description: Gets the best image associated with the story of certain aspect ratio.
+   * @name getImageSources
+   * @description: Gets the list of image sources of a given ratio.
    * @param ratio: The desired image's aspect ratio
-   * @param width: The minimum width of the desired image
   */
-  getImage(ratio: '1x1' | '4x3' | '16x9', width: number): string {
+   getImageSources (ratio: '1x1' | '4x3' | '16x9'): Crop[] {
     let image = this.contentInstance.primary_image
 
     if (image === null || !image.crops[ratio].sizes) {
@@ -67,22 +66,10 @@ export class Story {
     }
 
     if (image === null) {
-      return ''
+      return []
     }
-    
-    const sizes = [ ...image.crops[ratio].sizes ].sort((a, b) => {
-      return b.width - a.width;
-    })
 
-    const bestMatch = sizes.reduce((acc, crop) => {
-      if (crop.width >= width && acc.width > crop.width) {
-        return crop
-      }
-
-      return acc;
-    }, sizes[0])
-
-    return bestMatch.url;
+    return toJS(image.crops[ratio].sizes)
   }
 
   get id(): string {

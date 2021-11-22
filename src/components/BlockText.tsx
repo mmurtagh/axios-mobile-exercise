@@ -25,7 +25,7 @@ const Bullet = styled.View`
 `
 
 /** 
- * @name BlockText
+ * @name: BlockText
  * @description: Renders a block of text either unstyled or as an unordered list item
  * @param block: The Block object representing the block of text
 */

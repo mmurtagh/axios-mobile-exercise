@@ -1,4 +1,3 @@
-// types for data returned from axios apis
 interface Crop {
   width: number;
   height: number;
@@ -49,6 +48,9 @@ interface Topic {
   name: string;
 }
 
+/**
+ * Represents a stream  returned from the Axios Stream API
+ */
 interface AxiosStream {
   count: number;
   next: string | null;

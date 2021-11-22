@@ -2,13 +2,14 @@ import React, { useContext } from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { observer } from 'mobx-react-lite';
 import styled from 'styled-components/native';
-import { Linking, useWindowDimensions } from 'react-native'
+import { Linking } from 'react-native'
 
 import { RootStackParamList, StoryStoreContext } from '../index';
 import { Button, Headline, Screen, Card, Image, Paragraph } from '../components/components';
 import { DetailCaption } from '../components/DetailCaption';
 import { BlockText } from '../components/BlockText';
 import { fontColor, backdropColor, spacing } from '../utils/styling';
+import { ImageSourcePropType } from 'react-native';
 
 export type Props = NativeStackScreenProps<RootStackParamList, 'StoryDetail'>;
 
@@ -46,15 +47,14 @@ const StoryHeadline = styled(Headline)`
  * @param id: The id of the story
 */
 export const StoryDetail = observer(({ route: { params: { id } } }: Props) => {
-  const { width } = useWindowDimensions();
   const store = useContext(StoryStoreContext);
 
   const story = store.getStory(id);
 
   if (story === null) return null
 
-  const imageUrl: string | null = story.getImage('16x9', width);
   const imageDescription = story.imageDescription;
+  const imageSources: Crop[] = story.getImageSources('16x9');
 
   return (
     <Screen>
@@ -74,7 +74,7 @@ export const StoryDetail = observer(({ route: { params: { id } } }: Props) => {
             accessibilityLabel={imageDescription}
             testID="image"
             aspectRatio={16 / 9}
-            source={{ uri: imageUrl }}
+            source={imageSources}
           />
           <DetailCaption story={story} />
         </HeadlineCard>

@@ -89,9 +89,33 @@ exports[`StoryDetail snapshot 1`] = `
             accessible={true}
             aspectRatio={1.7777777777777777}
             source={
-              Object {
-                "uri": "Image200-16x9",
-              }
+              Array [
+                Object {
+                  "height": 100,
+                  "url": "Image100-16x9",
+                  "width": 100,
+                },
+                Object {
+                  "height": 200,
+                  "url": "Image200-16x9",
+                  "width": 200,
+                },
+                Object {
+                  "height": 300,
+                  "url": "Image300-16x9",
+                  "width": 300,
+                },
+                Object {
+                  "height": 400,
+                  "url": "Image400-16x9",
+                  "width": 400,
+                },
+                Object {
+                  "height": 500,
+                  "url": "Image500-16x9",
+                  "width": 500,
+                },
+              ]
             }
             style={
               Array [

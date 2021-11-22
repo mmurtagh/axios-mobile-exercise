@@ -45,9 +45,33 @@ exports[`StoryListItem snapshot 1`] = `
     <Image
       aspectRatio={1.3333333333333333}
       source={
-        Object {
-          "uri": "Image100-4x3",
-        }
+        Array [
+          Object {
+            "height": 100,
+            "url": "Image100-4x3",
+            "width": 100,
+          },
+          Object {
+            "height": 200,
+            "url": "Image200-4x3",
+            "width": 200,
+          },
+          Object {
+            "height": 300,
+            "url": "Image300-4x3",
+            "width": 300,
+          },
+          Object {
+            "height": 400,
+            "url": "Image400-4x3",
+            "width": 400,
+          },
+          Object {
+            "height": 500,
+            "url": "Image500-4x3",
+            "width": 500,
+          },
+        ]
       }
       style={
         Array [
