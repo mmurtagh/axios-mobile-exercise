@@ -16,12 +16,7 @@ export enum SupportedInlineStyle {
 
 function sanitizeContentInstance (_contentInstance: AxiosContentInstance): AxiosContentInstance {
   const contentInstance = { ..._contentInstance }
-  const {
-    blocks: {
-      entityMap,
-      blocks,
-    }
-  } = contentInstance;
+  const { blocks: { blocks } } = contentInstance;
 
   // Filter out all blocks with unsupported block type
   contentInstance.blocks.blocks = blocks.filter(({ type }) => {

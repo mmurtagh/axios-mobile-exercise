@@ -163,6 +163,7 @@ exports[`StoryDetail snapshot 1`] = `
                   },
                 ]
               }
+              testID="block-paragraph"
             >
               Lorem ipsum
             </Text>
@@ -189,6 +190,7 @@ exports[`StoryDetail snapshot 1`] = `
                   },
                 ]
               }
+              testID="bullet"
             />
             <Text
               style={
@@ -204,6 +206,7 @@ exports[`StoryDetail snapshot 1`] = `
                   },
                 ]
               }
+              testID="block-paragraph"
             >
               Dolor sit amet
             </Text>
@@ -244,11 +247,7 @@ exports[`StoryDetail snapshot 1`] = `
                     "color": "white",
                     "fontSize": 20,
                   },
-                  Array [
-                    Object {
-                      "color": "white",
-                    },
-                  ],
+                  undefined,
                   Object {
                     "fontFamily": "Material Icons",
                     "fontStyle": "normal",

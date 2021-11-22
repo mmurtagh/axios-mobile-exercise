@@ -6,7 +6,7 @@ import { clearTimers } from 'mobx-react-lite';
 
 import { DetailCaption } from '../../src/components/DetailCaption'
 import { Story } from '../../src/stores/Story'
-import contentInstance from '../contentInstance';
+import contentInstance from '../data/contentInstance';
 
 describe('DetailCaption', () => {
   beforeAll(() => {

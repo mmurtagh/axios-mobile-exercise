@@ -1,5 +1,6 @@
 
 import * as React from 'react';
+import styled from 'styled-components/native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Icon, Paragraph } from './components/components';
@@ -7,7 +8,6 @@ import { Icon, Paragraph } from './components/components';
 import { StoryList } from './screens/StoryList';
 import { StoryStore } from './stores/StoryStore';
 import StoryDetail from './screens/StoryDetail';
-import { ThemeProvider } from 'styled-components/native';
 
 export type RootStackParamList = {
   StoryList: undefined;
@@ -19,6 +19,11 @@ export const StoryStoreContext = React.createContext<StoryStore>(
   new StoryStore(),
 );
 
+const HeaderTitle = styled(Paragraph)`
+  flex: 1;
+  text-align: center;
+`
+
 export default function App() {
   return (
     <StoryStoreContext.Provider value={new StoryStore()}>
@@ -29,6 +34,7 @@ export default function App() {
             component={StoryList}
             options={{
               headerTitle: () => <Paragraph>Latest Stories</Paragraph>,
+              headerTitleAlign: 'center',
             }}
           />
           <Stack.Screen
@@ -36,6 +42,8 @@ export default function App() {
             component={StoryDetail}
             options={({ navigation }) => ({
               headerTitle: () => <Paragraph>Story Detail</Paragraph>,
+              headerTitleAlign: 'center',
+              headerBackVisible: false,
               headerLeft: () => <Icon size={40} name="chevron-left" onPress={() => navigation.goBack()}/>,
             })}
           />

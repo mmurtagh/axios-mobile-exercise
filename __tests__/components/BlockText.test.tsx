@@ -4,7 +4,7 @@ import { clearTimers } from 'mobx-react-lite';
 
 import { BlockText } from '../../src/components/BlockText'
 import { Story } from '../../src/stores/Story'
-import contentInstance from '../contentInstance';
+import contentInstance from '../data/contentInstance';
 
 describe('BlockText', () => {
   afterEach(() => {

@@ -1,6 +1,6 @@
 import { StoryStore } from '../../src/stores/StoryStore';
 import { Story } from '../../src/stores/Story';
-import contentInstance from '../contentInstance'
+import contentInstance from '../data/contentInstance'
 
 describe('StoryStore', () => {
   describe('getStory', () => {

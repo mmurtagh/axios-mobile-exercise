@@ -7,7 +7,7 @@ import { Linking } from 'react-native';
 import { StoryDetail } from '../../src/screens/StoryDetail'
 import { StoryStore } from '../../src/stores/StoryStore';
 import { Story } from '../../src/stores/Story';
-import contentInstance from '../contentInstance';
+import contentInstance from '../data/contentInstance';
 import { RouteProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
@@ -17,7 +17,6 @@ mockStore.stories = [ story ];
 mockStore.loadMostRecentStories = jest.fn();
 
 const mockNavigation = {} as NativeStackNavigationProp<RootStackParamList, 'StoryDetail'>;
-
 const mockRoute = { params: { id: '1A2B3C' } } as RouteProp<RootStackParamList, 'StoryDetail'>;
 
 jest.mock('react', () => {
@@ -52,7 +51,7 @@ describe('StoryDetail', () => {
     expect(getByTestId('headline').children[0]).toBe(story.headline);
   })
 
-  test('image', () => {
+  test('image - 16x9 aspect ratio', () => {
     const { getByTestId } = render(<StoryDetail navigation={mockNavigation} route={mockRoute} />);
     const imageUrl = story.getImage('16x9', 200);
 

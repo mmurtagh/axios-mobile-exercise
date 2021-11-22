@@ -37,10 +37,10 @@ export const StoryListItem = observer(({ story }: { story: Story }) => {
   return (
     <Touchable onPress={() => navigation.navigate('StoryDetail', { id: story.id })}>
       <ListItem>
-        <ThumbnailImage aspectRatio={4 / 3} source={{ uri: imageUrl }} />
+        <ThumbnailImage testID="thumbnail-image" aspectRatio={4 / 3} source={{ uri: imageUrl }} />
         <Container>
-          <Paragraph>{story.headline}</Paragraph>
-          <Author>{story.author}</Author>
+          <Paragraph testID="headline">{story.headline}</Paragraph>
+          <Author testID="author">{story.author}</Author>
         </Container>
       </ListItem>
     </Touchable>

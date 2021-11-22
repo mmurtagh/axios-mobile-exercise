@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { Story } from "../../src/stores/Story";
-import contentInstance from '../contentInstance';
+import contentInstance from '../data/contentInstance';
 
 describe('Story', () => {
   test('filters out unsupported blocks', () => {

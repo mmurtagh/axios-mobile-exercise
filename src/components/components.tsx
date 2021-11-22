@@ -22,17 +22,6 @@ const Container = styled.View`
   padding-horizontal: ${spacing()};
 `;
 
-
-export const Screen = ({ children, ...rest }: SafeAreaViewProps) => {
-  return (
-    <SafeAreaView {...rest}>
-      <Container>
-        {children}
-      </Container>
-    </SafeAreaView>
-  );
-};
-
 export const Card = styled.View`
   padding: ${spacing()};
   box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.25);
@@ -63,16 +52,6 @@ export const Caption = styled(AppText)`
   font-size: ${fontSize('sm')};
 `;
 
-const StyledIcon = styled(MaterialIcon)`
-  color: ${({ color }) => color || primary};
-`;
-
-export const Icon = (
-  { name, size = 30, onPress, color }:
-  { name: string; size?: number, onPress?: () => any | null, color?: string }) => {
-  return <StyledIcon color={color} size={size} name={name} onPress={onPress}/>
-};
-
 export const Touchable = styled.TouchableOpacity`
   background-color: ${primary};
   padding: ${spacing()}
@@ -92,6 +71,22 @@ interface AppButtonProps extends TouchableOpacityProps {
   title: string;
   icon: string;
 }
+
+export const Screen = ({ children, ...rest }: SafeAreaViewProps) => {
+  return (
+    <SafeAreaView {...rest}>
+      <Container>
+        {children}
+      </Container>
+    </SafeAreaView>
+  );
+};
+
+export const Icon = (
+  { name, size = 30, onPress, color = primary }:
+  { name: string; size?: number, onPress?: () => any | null, color?: string }) => {
+  return <MaterialIcon color={color} size={size} name={name} onPress={onPress}/>
+};
 
 export const Button = ({ title, onPress, icon, ...props }: AppButtonProps) => {
   return (
