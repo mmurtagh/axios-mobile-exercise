@@ -69,7 +69,7 @@ const ButtonText = styled(Paragraph)`
 
 interface AppButtonProps extends TouchableOpacityProps {
   title: string;
-  icon: string;
+  icon?: string;
 }
 
 export const Screen = ({ children, ...rest }: SafeAreaViewProps) => {
