@@ -25,7 +25,7 @@ const axiosImage: AxiosImage = {
 
 const contentInstance: AxiosContentInstance = {
   id: '1A2B3C',
-  authors: [{ display_name: '' }],
+  authors: [{ display_name: 'Foo Barrington' }],
   headline: 'This is the headline',
   published_date: '2021-08-02T18:36:19.716000Z',
   blocks: {

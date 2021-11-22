@@ -29,28 +29,28 @@ describe('StoryListItem', () => {
 
   test('snapshot', () => {
     const story = new Story(contentInstance);
-    const obj = render(<StoryListItem story={story} />)
+    const obj = render(<StoryListItem story={story} totalStories={20} index={0}/>)
 
     expect(obj).toMatchSnapshot();
   })
 
   test('headline', () => {
     const story = new Story(contentInstance);
-    const { getByTestId } = render(<StoryListItem story={story} />)
+    const { getByTestId } = render(<StoryListItem story={story} totalStories={20} index={0}/>)
 
     expect(getByTestId('headline').children[0]).toBe(story.headline);
   })
 
   test('author', () => {
     const story = new Story(contentInstance);
-    const { getByTestId } = render(<StoryListItem story={story} />)
+    const { getByTestId } = render(<StoryListItem story={story} totalStories={20} index={0}/>)
 
     expect(getByTestId('author').children[0]).toBe(story.author);
   })
 
   test('image - 4x3 aspect ratio and half window req', () => {
     const story = new Story(contentInstance);
-    const { getByTestId } = render(<StoryListItem story={story} />)
+    const { getByTestId } = render(<StoryListItem story={story} totalStories={20} index={0}/>)
     // width is mocked to 200 but StoryListItem requests 1/2 screen width
     const imageUrl = story.getImage('4x3', 100);
 

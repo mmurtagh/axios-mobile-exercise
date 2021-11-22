@@ -2,6 +2,7 @@
 
 exports[`StoryListItem snapshot 1`] = `
 <View
+  accessibilityLabel="1 of 20: This is the headline by Foo Barrington"
   accessible={true}
   collapsable={false}
   focusable={true}
@@ -101,7 +102,7 @@ exports[`StoryListItem snapshot 1`] = `
         }
         testID="author"
       >
-        
+        Foo Barrington
       </Text>
     </View>
   </View>

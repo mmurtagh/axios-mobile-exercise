@@ -12,12 +12,14 @@ import { StoryStoreContext } from '..';
 import { ErrorCard } from '../components/ErrorCard';
 
 const Separator = styled.View`
-  padding-top: ${spacing('sm')}
+  padding-top: ${spacing('sm')};
 `
 const Header = styled.View`
-  padding-top: ${spacing()}
+  padding-top: ${spacing()};
 `
-const Spinner = styled.ActivityIndicator``
+const Spinner = styled.ActivityIndicator`
+  padding-top: ${spacing()};
+`
 const RefreshControl = styled.RefreshControl``
 enum LoadingState {
   LOADING,

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
-import { Button, Card, Headline } from '../components/components';
+import { Button, Card, Paragraph } from '../components/components';
 import { spacing } from '../utils/styling';
 
 const ErrorButton = styled(Button)`
@@ -12,7 +12,7 @@ const Container = styled(Card)`
   margin-top: ${spacing()};
 `
 
-const ErrorText = styled(Headline)`
+const ErrorText = styled(Paragraph)`
   text-align: center;
 `
 
