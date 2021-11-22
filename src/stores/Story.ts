@@ -1,17 +1,9 @@
 import { makeAutoObservable, toJS } from 'mobx';
 import dayjs from 'dayjs';
 
-export enum SupportedEntityType {
-  LINK = 'LINK',
-}
-
 export enum SupportedBlockType {
   UNSTYLED = 'unstyled',
   UNORDERED_LIST_ITEM = 'unordered-list-item',
-}
-
-export enum SupportedInlineStyle {
-  BOLD = 'BOLD',
 }
 
 /** 
