@@ -2,9 +2,10 @@
 
 This is a react native project that consumes the Axios stream and content APIs to show the user a list of the latest stories along with a detail view for each story.
 
-
-<img src="assets/story-list-view.png" width="250">
-<img src="assets/story-detail.png" width="250">
+<div>  
+   <img src="assets/story-list-view.png" width="300">
+   <img src="assets/story-detail.png" width="300">
+</div>
 
 ## State Management
 
