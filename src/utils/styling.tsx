@@ -1,5 +1,10 @@
 type StyleSize = 'sm' | 'md' | 'lg'
 
+/** 
+ * @name: spacing
+ * @description: Gets spacing values depending on size paramter
+ * @param size: The size of the spacing; sm, md, or lg
+*/
 export function spacing(size: StyleSize = 'md') {
   const defaultSpacing = 10;
 
@@ -19,6 +24,11 @@ export function spacing(size: StyleSize = 'md') {
   return `${value}px`;
 }
 
+/** 
+ * @name: fontSize
+ * @description: Gets fontSize values depending on size paramter
+ * @param size: The size of the font; sm, md, or lg
+*/
 export function fontSize (size: StyleSize = 'md') {
   let value;
   switch (size) {

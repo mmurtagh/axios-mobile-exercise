@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
-import { Button, Card, Headline, Paragraph, Screen } from '../components/components';
+import { Button, Card, Headline } from '../components/components';
 import { spacing } from '../utils/styling';
 
 const ErrorButton = styled(Button)`
@@ -16,6 +16,12 @@ const ErrorText = styled(Headline)`
   text-align: center;
 `
 
+/** 
+ * @name: ErrorCard
+ * @description: Component that informs the user there has been an error
+ * and allows them to retry the action that caused the error
+ * @param onPress: The function that is be called when the user presses the "Try Again" button
+*/
 export const ErrorCard = ({ onPress }: { onPress: () => any}) => {
   return (
     <Container testID="error-card">

@@ -2,9 +2,9 @@ import { observer } from 'mobx-react-lite';
 import React from 'react';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { useWindowDimensions } from 'react-native';
+import styled from 'styled-components/native';
 
 import { Story } from '../stores/Story';
-import styled from 'styled-components/native';
 import { spacing } from '../utils/styling'
 import { Card, Image, Paragraph, Caption } from './components';
 import { RootStackParamList } from '..';
@@ -29,13 +29,28 @@ const ListItem = styled(Card)`
 
 const Touchable = styled.TouchableOpacity``;
 
-export const StoryListItem = observer(({ story }: { story: Story }) => {
+/** 
+ * @name: StoryListItem
+ * @description: A list item representing a story
+ * @param story: The story the list item represents
+ * @param index: Where the story falls in the list
+ * @param totalStories: The total number of stories in the list
+*/
+export const StoryListItem = observer((
+  { story, index, totalStories }:
+  { story: Story, index: number, totalStories: number}
+) => {
   const { width } = useWindowDimensions();
   const imageUrl: string = story.getImage('4x3', width / 2);
   const navigation: NavigationProp<RootStackParamList> = useNavigation();
 
+  const accessibilityLabel = `${index + 1} of ${totalStories}: ${story.headline} by ${story.author}`
+
   return (
-    <Touchable onPress={() => navigation.navigate('StoryDetail', { id: story.id })}>
+    <Touchable
+      accessibilityLabel={accessibilityLabel}
+      onPress={() => navigation.navigate('StoryDetail', { id: story.id })}
+    >
       <ListItem>
         <ThumbnailImage testID="thumbnail-image" aspectRatio={4 / 3} source={{ uri: imageUrl }} />
         <Container>

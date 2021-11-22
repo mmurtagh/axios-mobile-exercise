@@ -26,6 +26,10 @@ enum LoadingState {
   ERRORED,
 }
 
+/** 
+ * @name: StoryList
+ * @description: Screen displaying the list of stories
+*/
 export const StoryList = observer(() => {
   const store: StoryStore = useContext(StoryStoreContext);
   const [ loadingState, setLoadingState ] = useState(LoadingState.LOADING)
@@ -42,8 +46,8 @@ export const StoryList = observer(() => {
     loadStories(LoadingState.LOADING); 
   }, []);
 
-  const renderItem = ({ item }: { item: Story }) => {
-    return <StoryListItem story={item} />;
+  const renderItem = ({ item, index }: { item: Story, index: number }) => {
+    return <StoryListItem story={item} index={index} totalStories={store.stories.length} />;
   };
 
   return (

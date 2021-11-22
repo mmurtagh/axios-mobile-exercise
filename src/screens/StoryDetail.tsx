@@ -37,23 +37,45 @@ const StoryHeadline = styled(Headline)`
   font-weight: bold;
 `
 
-export const StoryDetail = observer(({ route }: Props) => {
+/** 
+ * @name: StoryDetail
+ * @description: Screen displaying the detail view of a story
+ * @param story: The story the list item represents
+ * @param index: Where the story falls in the list
+ * @param totalStories: The total number of stories in the list
+ * @param id: The id of the story
+*/
+export const StoryDetail = observer(({ route: { params: { id } } }: Props) => {
   const { width } = useWindowDimensions();
   const store = useContext(StoryStoreContext);
 
-  const story = store.getStory(route.params.id);
+  const story = store.getStory(id);
 
   if (story === null) return null
 
   const imageUrl: string | null = story.getImage('16x9', width);
+  const imageDescription = story.imageDescription;
 
   return (
     <Screen>
       <ScrollView>
         <HeadlineCard>
-          <StoryHeadline testID="headline">{story.headline}</StoryHeadline>
+          <StoryHeadline
+            accessibilityRole="header"
+            accessibilityLabel={story.headline}
+            testID="headline"
+          >
+            {story.headline}
+          </StoryHeadline>
           <Break />
-          <Image testID="image" aspectRatio={16 / 9} source={{ uri: imageUrl }}/>
+          <Image
+            accessible
+            accessibilityRole="image"
+            accessibilityLabel={imageDescription}
+            testID="image"
+            aspectRatio={16 / 9}
+            source={{ uri: imageUrl }}
+          />
           <DetailCaption story={story} />
         </HeadlineCard>
         <BlockTextCard testID="block-text-card">

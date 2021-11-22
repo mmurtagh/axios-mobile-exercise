@@ -27,7 +27,7 @@ export default function App() {
             name="StoryList"
             component={StoryList}
             options={{
-              headerTitle: () => <Paragraph>Latest Stories</Paragraph>,
+              headerTitle: () => <Paragraph accessibilityRole="header">Latest Stories</Paragraph>,
               headerTitleAlign: 'center',
             }}
           />
@@ -35,10 +35,19 @@ export default function App() {
             name="StoryDetail"
             component={StoryDetail}
             options={({ navigation }) => ({
-              headerTitle: () => <Paragraph>Story Detail</Paragraph>,
+              headerTitle: () => <Paragraph accessibilityRole="header">Story Detail</Paragraph>,
               headerTitleAlign: 'center',
               headerBackVisible: false,
-              headerLeft: () => <Icon size={40} name="chevron-left" onPress={() => navigation.goBack()}/>,
+              headerLeft: () => (
+                <Icon
+                  accessible
+                  accessibilityRole="button"
+                  accessibilityLabel="Return to latest stories"
+                  size={40}
+                  name="chevron-left"
+                  onPress={navigation.goBack}
+                />
+              ),
             })}
           />
         </Stack.Navigator>
