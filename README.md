@@ -48,4 +48,5 @@ This app should be accessible via voiceover/talkback. I enhanced the default acc
 * Persistence
   * Right now, there's no persistence on my `mobx` store so the stories have to be loaded fresh on each cold start. Ideally, the old stories would stick around as a fallback in case the user doesn't have network access.
 * Pull to refresh on `StoryDetail`
+* Scaling text for accessibility
 
