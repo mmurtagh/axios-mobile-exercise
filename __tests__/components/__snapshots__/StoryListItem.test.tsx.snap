@@ -1,0 +1,134 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StoryListItem snapshot 1`] = `
+<View
+  accessibilityLabel="1 of 20: This is the headline by Foo Barrington"
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  nativeID="animatedComponent"
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "opacity": 1,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#fff",
+          "borderRadius": 5,
+          "flexDirection": "row",
+          "paddingBottom": 10,
+          "paddingLeft": 10,
+          "paddingRight": 10,
+          "paddingTop": 10,
+          "shadowColor": "rgba(0, 0, 0, 0.25)",
+          "shadowOffset": Object {
+            "height": 2,
+            "width": 0,
+          },
+          "shadowOpacity": 1,
+          "shadowRadius": 1,
+        },
+      ]
+    }
+  >
+    <Image
+      aspectRatio={1.3333333333333333}
+      source={
+        Array [
+          Object {
+            "height": 100,
+            "url": "Image100-4x3",
+            "width": 100,
+          },
+          Object {
+            "height": 200,
+            "url": "Image200-4x3",
+            "width": 200,
+          },
+          Object {
+            "height": 300,
+            "url": "Image300-4x3",
+            "width": 300,
+          },
+          Object {
+            "height": 400,
+            "url": "Image400-4x3",
+            "width": 400,
+          },
+          Object {
+            "height": 500,
+            "url": "Image500-4x3",
+            "width": 500,
+          },
+        ]
+      }
+      style={
+        Array [
+          Object {
+            "alignSelf": "center",
+            "aspectRatio": 1.3333333333333333,
+            "borderRadius": 5,
+            "flexBasis": 0,
+            "flexGrow": 2,
+            "flexShrink": 1,
+          },
+        ]
+      }
+      testID="thumbnail-image"
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 3,
+            "flexShrink": 1,
+            "paddingLeft": 10,
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#444",
+              "fontFamily": "Helvetica",
+              "fontSize": 16,
+            },
+          ]
+        }
+        testID="headline"
+      >
+        This is the headline
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#444",
+              "fontFamily": "Helvetica",
+              "fontSize": 12,
+              "marginTop": 5,
+            },
+          ]
+        }
+        testID="author"
+      >
+        Foo Barrington
+      </Text>
+    </View>
+  </View>
+</View>
+`;

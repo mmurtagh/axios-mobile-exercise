@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DetailCaption snapshot 1`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "color": "#444",
+        "fontFamily": "Helvetica",
+        "fontSize": 12,
+        "paddingTop": 10,
+      },
+    ]
+  }
+  testID="styled-caption"
+>
+  4 months ago - Science
+</Text>
+`;

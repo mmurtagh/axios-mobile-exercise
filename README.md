@@ -1,57 +1,51 @@
-# Axios Mobile Excerise
-Axios has a lot of award-winning journalism, and sometimes it doesn't all fit on one page, so we have to help readers easily find and read the stories they want. Your challenge is to build a mobile listicle view that displays various stories and navigates to the full view of the story.
+# Project Overview
 
-## Before you start
-We're not trying to get you to work for us for free, so please don't spend than more than 4 hours on this. You can write a `TODO` doc that explains how you'd complete any tasks you don't get to.
+This is a react native project that consumes the Axios stream and content APIs to show the user a list of the latest stories along with a detail view for each story.
 
-## What You're Building
-Using Axios' own public API, build a mobile view that lists the latest 20 stories, along with an additional view to show the entirety of the story.
+<div>  
+   <img src="assets/story-list-view.png" width="300">
+   <img src="assets/story-detail.png" width="300">
+</div>
 
-## Getting started
-1. Fork this repo to begin the exercise.
-2. Use React Native and rebuild the mocks in the PDF wireframe (`assets/wireframe.pdf`).
-3. First make a call to the stream endpoint to retrieve an array of the 20 lastest story ids for Axios.com.
-4. For each story id, make another call to the content endpoint to retrieve the data for each story.
-5. For each story in the listicle view, display the following:
-- The `headline` of the story.
-- The `primary_image` of the story.
-6. For each list item, link to a separate view that shows the full story and display the following:
-- The `headline` of the story.
-- The `display name` of the author.
-- The `section label` of the story.
-- The `primary_image` of the story.
-- The `published date` of the story.
-- The `body text` of the story. Note we store our body text as [DraftJS](https://draftjs.org). At a minimum, return the body as text.
-### Bonus:
-- Parse out the DraftJS to render the body text with HTML markup.
-- Link out to Axios.com from the story view.
-- Link back to the listicle view from the full story view.
+## State Management
 
-## API Details
+I used `mobx` and `mobx-react-lite` for state management in this project. I maintain a store of "Stories" that can be observed by UI components. See `StoryStore.ts` and `Store.ts` for more details.
 
-### Stream endpoint
-https://api.axios.com/api/render/stream/content
+## UI
 
-This returns by default the UUIDs of about 10 stories, but the page size can be altered.
+* `styled-components`
+    * I used styled components to create a small project specific component library that I used throughout the app. See `components.ts` for more details.
+* `react-navigation`
+    * I used react-navigation for handling navigating between the `StoryList` and `StoryDetail` screens. 
+* `react-native-vector-icons`
+    * I used this package to get the icons for the header button and the "Visit Axios.com" button on the StoryDetail
 
-### Content endpoint
-https://api.axios.com/api/render/content/c13dbda5-893d-46ba-ae6a-87ff8e34c74e
+## Accessibility
 
-This returns the content and detail of one story, from its UUID.
+This app should be accessible via voiceover/talkback. I enhanced the default accessibility of the app in the following ways:
 
-## Suggestions
-We tend to prefer functional components over classes, and hooks where necessary.
-
-You can use any data fetching library you like. Fetch, Axios (heh) or SWR will all do just fine.
-
-We care about accessibility. Please make your page as accessible as possible.
-
-Building software is a collaborative process, so if you're feeling adventurous, feel free to diverge from the designs somewhat and apply your own creativity. Let us know about the choices you made, and why.
-
-We like to us Jest already here for our unit tests. Add the amount of test coverage you feel is appropriate.
-
-We use TypeScript at Axios. Bonus points if you define types and use them effectively to increase the reliability of your code.
+* Added `header` roles to the nav headers and headline within `StoryDetail`
+* Customed the the `accessibility-label` of `StoryListIem` components to tell the user where they are within the list, and rephrased the text that is read relating to the heading and author
+  * e.g. `5 of 20: Target to close stores on Thanksgiving for good by Ivana Saric`
+* Added `image` role and `accessibility-label` to the image shown in the `StoryDetail`
+* Added `button` role and `accessibility-label` to the back icon on `StoryDetail`. This tells the user that this element is clickable and will return them to the story list.
 
 
+## Additional Features
 
+* **Pull to Refresh**
+    * The `StoryList` screen has pull to refresh enabled. Pulling down from the top of screen will refresh the list of stories.
+* **Error Handling**
+    * The `StoryList` gracefully handles connection errors, alerts the user to the error, and allows the user to retry the request
+* **Partial Rich Text Support**
+    * Text blocks within the story detail will display as unordered list items if appropriate
+
+## `@TODO`
+* Support `entityRanges` and `inlineStyleRanges`
+    * I want to enhance the `BlockText` component to at least support the `BOLD` inline style and `LINK` entities.
+* Support theming
+    * `styled-components` supports themeing, so I want to refactor all my styling stuff into themes which shouldn't be much more work.
+* Persistence
+  * Right now, there's no persistence on my `mobx` store so the stories have to be loaded fresh on each cold start. Ideally, the old stories would stick around as a fallback in case the user doesn't have network access.
+* Pull to refresh on `StoryDetail`
 

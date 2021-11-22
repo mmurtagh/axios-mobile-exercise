@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Story getImageSources falls back to social_image if primary_image is null 1`] = `
+Array [
+  Object {
+    "height": 100,
+    "url": "Image100-4x3",
+    "width": 100,
+  },
+  Object {
+    "height": 200,
+    "url": "Image200-4x3",
+    "width": 200,
+  },
+  Object {
+    "height": 300,
+    "url": "Image300-4x3",
+    "width": 300,
+  },
+  Object {
+    "height": 400,
+    "url": "Image400-4x3",
+    "width": 400,
+  },
+  Object {
+    "height": 500,
+    "url": "Image500-4x3",
+    "width": 500,
+  },
+]
+`;
+
+exports[`Story getImageSources gets image sources of correct ratio 1`] = `
+Array [
+  Object {
+    "height": 100,
+    "url": "Image100-1x1",
+    "width": 100,
+  },
+  Object {
+    "height": 200,
+    "url": "Image200-1x1",
+    "width": 200,
+  },
+  Object {
+    "height": 300,
+    "url": "Image300-1x1",
+    "width": 300,
+  },
+  Object {
+    "height": 400,
+    "url": "Image400-1x1",
+    "width": 400,
+  },
+  Object {
+    "height": 500,
+    "url": "Image500-1x1",
+    "width": 500,
+  },
+]
+`;
