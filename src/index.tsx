@@ -19,11 +19,6 @@ export const StoryStoreContext = React.createContext<StoryStore>(
   new StoryStore(),
 );
 
-const HeaderTitle = styled(Paragraph)`
-  flex: 1;
-  text-align: center;
-`
-
 export default function App() {
   return (
     <StoryStoreContext.Provider value={new StoryStore()}>
