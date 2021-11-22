@@ -1,0 +1,284 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StoryDetail snapshot 1`] = `
+<RCTSafeAreaView
+  emulateUnlessSupported={true}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#d3d3d3",
+        "flexGrow": 1,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "paddingHorizontal": 10,
+        },
+      ]
+    }
+  >
+    <RCTScrollView
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#d3d3d3",
+            "height": "100%",
+          },
+        ]
+      }
+    >
+      <View>
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#fff",
+                "borderRadius": 5,
+                "marginTop": 10,
+                "paddingBottom": 10,
+                "paddingLeft": 10,
+                "paddingRight": 10,
+                "paddingTop": 10,
+                "shadowColor": "rgba(0, 0, 0, 0.25)",
+                "shadowOffset": Object {
+                  "height": 2,
+                  "width": 0,
+                },
+                "shadowOpacity": 1,
+                "shadowRadius": 1,
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#444",
+                  "fontFamily": "Helvetica",
+                  "fontSize": 24,
+                  "fontWeight": "bold",
+                  "textAlign": "center",
+                },
+              ]
+            }
+            testID="headline"
+          >
+            This is the headline
+          </Text>
+          <View
+            style={
+              Array [
+                Object {
+                  "borderBottomWidth": 1,
+                  "borderColor": "#444",
+                  "marginVertical": 15,
+                },
+              ]
+            }
+          />
+          <Image
+            aspectRatio={1.7777777777777777}
+            source={
+              Object {
+                "uri": "Image200-16x9",
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "aspectRatio": 1.7777777777777777,
+                  "borderRadius": 5,
+                  "flexBasis": 0,
+                  "flexGrow": 2,
+                  "flexShrink": 1,
+                },
+              ]
+            }
+            testID="image"
+          />
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#444",
+                  "fontFamily": "Helvetica",
+                  "fontSize": 12,
+                  "paddingTop": 10,
+                },
+              ]
+            }
+            testID="styled-caption"
+          >
+            4 months ago - Science
+          </Text>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#fff",
+                "borderRadius": 5,
+                "marginVertical": 10,
+                "paddingBottom": 10,
+                "paddingLeft": 10,
+                "paddingRight": 10,
+                "paddingTop": 10,
+                "shadowColor": "rgba(0, 0, 0, 0.25)",
+                "shadowOffset": Object {
+                  "height": 2,
+                  "width": 0,
+                },
+                "shadowOpacity": 1,
+                "shadowRadius": 1,
+              },
+            ]
+          }
+          testID="block-text-card"
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                },
+              ]
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#444",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Helvetica",
+                    "fontSize": 16,
+                    "marginBottom": 10,
+                  },
+                ]
+              }
+            >
+              Lorem ipsum
+            </Text>
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "#444",
+                    "borderRadius": 4,
+                    "height": 8,
+                    "marginRight": 10,
+                    "marginTop": 5,
+                    "width": 8,
+                  },
+                ]
+              }
+            />
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#444",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Helvetica",
+                    "fontSize": 16,
+                    "marginBottom": 10,
+                  },
+                ]
+              }
+            >
+              Dolor sit amet
+            </Text>
+          </View>
+          <View
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            nativeID="animatedComponent"
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#0096c7",
+                "borderRadius": 5,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "opacity": 1,
+                "paddingBottom": 10,
+                "paddingLeft": 10,
+                "paddingRight": 10,
+                "paddingTop": 10,
+              }
+            }
+            testID="button"
+          >
+            <Text
+              allowFontScaling={false}
+              style={
+                Array [
+                  Object {
+                    "color": "white",
+                    "fontSize": 20,
+                  },
+                  Array [
+                    Object {
+                      "color": "white",
+                    },
+                  ],
+                  Object {
+                    "fontFamily": "Material Icons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
+                ]
+              }
+            >
+              
+            </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "white",
+                    "fontFamily": "Helvetica",
+                    "fontSize": 16,
+                    "paddingLeft": 5,
+                    "textAlign": "center",
+                  },
+                ]
+              }
+            >
+              Visit Axios.com
+            </Text>
+          </View>
+        </View>
+      </View>
+    </RCTScrollView>
+  </View>
+</RCTSafeAreaView>
+`;

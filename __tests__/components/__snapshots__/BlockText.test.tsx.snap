@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BlockText snapshot 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flexDirection": "row",
+      },
+    ]
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#444",
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "fontFamily": "Helvetica",
+          "fontSize": 16,
+          "marginBottom": 10,
+        },
+      ]
+    }
+    testID="block-paragraph"
+  >
+    Lorem ipsum
+  </Text>
+</View>
+`;

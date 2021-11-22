@@ -49,7 +49,7 @@ describe('Story', () => {
 
       const url = story.getImage('1x1', desiredWidth)
 
-      expect(url).toBe('Image300x300');
+      expect(url).toBe('Image300-1x1');
     });
 
     test('picks highest res image if width is larger than all options', () => {
@@ -58,7 +58,7 @@ describe('Story', () => {
 
       const url = story.getImage('1x1', desiredWidth)
 
-      expect(url).toBe('Image400x400');
+      expect(url).toBe('Image500-1x1');
     });
 
     test('falls back to social_image if primary_image is null', () => {
@@ -70,17 +70,17 @@ describe('Story', () => {
       const url = story.getImage('1x1', 100)
 
       expect(url).not.toBe(null);
-      expect(url).toBe('Image100x100');
+      expect(url).toBe('Image100-1x1');
     })
 
-    test('returns null if neither primary_image or social_image exists', () => {
+    test('returns empty string if neither primary_image or social_image exists', () => {
       const value = { ...contentInstance };
       value.primary_image = null;
       const story = new Story(value)
 
       const url = story.getImage('1x1', 100)
 
-      expect(url).toBe(null);
+      expect(url).toBe('');
     });
   });
 

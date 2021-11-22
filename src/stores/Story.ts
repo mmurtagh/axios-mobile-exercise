@@ -49,7 +49,7 @@ export class Story {
     return dayjs(this.contentInstance.published_date);
   }
 
-  getImage(ratio: '1x1' | '4x3' | '16x9', width: number): string | null {
+  getImage(ratio: '1x1' | '4x3' | '16x9', width: number): string {
     let image = this.contentInstance.primary_image
 
     if (image === null || !image.crops[ratio].sizes) {
@@ -57,10 +57,12 @@ export class Story {
     }
 
     if (image === null) {
-      return null
+      return ''
     }
     
-    const { sizes } = image.crops[ratio];
+    const sizes = [ ...image.crops[ratio].sizes ].sort((a, b) => {
+      return b.width - a.width;
+    })
 
     const bestMatch = sizes.reduce((acc, crop) => {
       if (crop.width >= width && acc.width > crop.width) {

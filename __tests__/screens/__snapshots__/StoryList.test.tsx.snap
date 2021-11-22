@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StoryList snapshot 1`] = `
+<RCTSafeAreaView
+  emulateUnlessSupported={true}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#d3d3d3",
+        "flexGrow": 1,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "paddingHorizontal": 10,
+        },
+      ]
+    }
+  >
+    <RCTScrollView
+      ItemSeparatorComponent={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+  padding-top: ",
+              "5px",
+              "
+",
+            ],
+          },
+          "render": [Function],
+          "shouldForwardProp": undefined,
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      ListFooterComponent={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+  padding-top: ",
+              "10px",
+              "
+",
+            ],
+          },
+          "render": [Function],
+          "shouldForwardProp": undefined,
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      ListHeaderComponent={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+  padding-top: ",
+              "10px",
+              "
+",
+            ],
+          },
+          "render": [Function],
+          "shouldForwardProp": undefined,
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      data={Array []}
+      getItem={[Function]}
+      getItemCount={[Function]}
+      keyExtractor={[Function]}
+      onContentSizeChange={[Function]}
+      onLayout={[Function]}
+      onMomentumScrollBegin={[Function]}
+      onMomentumScrollEnd={[Function]}
+      onScroll={[Function]}
+      onScrollBeginDrag={[Function]}
+      onScrollEndDrag={[Function]}
+      refreshControl={
+        <Styled(RefreshControlMock)
+          onRefresh={[Function]}
+          refreshing={false}
+          testID="refresh-control"
+        />
+      }
+      removeClippedSubviews={false}
+      renderItem={[Function]}
+      scrollEventThrottle={50}
+      stickyHeaderIndices={Array []}
+      testID="flatlist"
+      viewabilityConfigCallbackPairs={Array []}
+    >
+      <RCTRefreshControl />
+      <View>
+        <View
+          onLayout={[Function]}
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "paddingTop": 10,
+                },
+              ]
+            }
+          />
+        </View>
+        <View
+          onLayout={[Function]}
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "paddingTop": 10,
+                },
+              ]
+            }
+          />
+        </View>
+      </View>
+    </RCTScrollView>
+  </View>
+</RCTSafeAreaView>
+`;

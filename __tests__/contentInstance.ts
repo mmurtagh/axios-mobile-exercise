@@ -1,33 +1,21 @@
-const sizes: Crop[] = [
-  {
-    width: 400,
-    height: 400,
-    url: 'Image400x400',
-  },
-  {
-    width: 300,
-    height: 300,
-    url: 'Image300x300',
-  },
-  {
-    width: 200,
-    height: 200,
-    url: 'Image200x200',
-  },
-  {
-    width: 100,
-    height: 100,
-    url: 'Image100x100',
-  },
-];
+const generateSizes = (ratio: '1x1' | '4x3' | '16x9'): Crop[] => {
+  return Array.from({ length: 5 }, (_, index) => {
+    const size = (index + 1) * 100;
+    return {
+      width: size,
+      height: size,
+      url: `Image${size}-${ratio}`,
+    };
+  })
+}
 
 const axiosImage: AxiosImage = {
   id: 'ABC',
   alt_text: '',
   crops: {
-    '1x1': { sizes },
-    '4x3': { sizes },
-    '16x9': { sizes },
+    '1x1': { sizes: generateSizes('1x1') },
+    '4x3': { sizes: generateSizes('4x3') },
+    '16x9': { sizes: generateSizes('16x9') },
   },
   caption: {
     blocks: [],
@@ -38,7 +26,7 @@ const axiosImage: AxiosImage = {
 const contentInstance: AxiosContentInstance = {
   id: '1A2B3C',
   authors: [{ display_name: '' }],
-  headline: '',
+  headline: 'This is the headline',
   published_date: '2021-08-02T18:36:19.716000Z',
   blocks: {
     blocks: [

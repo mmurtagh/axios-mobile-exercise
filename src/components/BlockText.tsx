@@ -23,11 +23,11 @@ const Bullet = styled.View`
   margin-right: ${spacing()};
 `
 
-export const BlockText = observer(({ block, entityMap }: { block: Block, entityMap: Entity[] }) => {
+export const BlockText = observer(({ block }: { block: Block }) => {
   return (
     <Container>
-      {block.type === SupportedBlockType.UNORDERED_LIST_ITEM && <Bullet />}
-      <BlockParagraph>{block.text}</BlockParagraph>
+      {block.type === SupportedBlockType.UNORDERED_LIST_ITEM && <Bullet testID="bullet"/>}
+      <BlockParagraph testID="block-paragraph">{block.text}</BlockParagraph>
     </Container>
   )
 });

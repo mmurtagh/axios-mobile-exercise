@@ -19,6 +19,7 @@ const HeadlineCard = styled(Card)`
 `
 const ScrollView = styled.ScrollView`
   background-color: ${backdropColor};
+  height: 100%;
 `
 
 const Break = styled.View`
@@ -36,26 +37,35 @@ const StoryHeadline = styled(Headline)`
   font-weight: bold;
 `
 
-export const StoryDetail = observer(({ navigation, route }: Props) => {
+export const StoryDetail = observer(({ route }: Props) => {
   const { width } = useWindowDimensions();
   const store = useContext(StoryStoreContext);
+
   const story = store.getStory(route.params.id);
-  const imageUrl: string = story.getImage('16x9', width);
+
+  if (story === null) return null
+
+  const imageUrl: string | null = story.getImage('16x9', width);
 
   return (
     <Screen>
       <ScrollView>
         <HeadlineCard>
-          <StoryHeadline>{story.headline}</StoryHeadline>
+          <StoryHeadline testID="headline">{story.headline}</StoryHeadline>
           <Break />
-          <Image aspectRatio={16 / 9} source={{ uri: imageUrl }} />
+          <Image testID="image" aspectRatio={16 / 9} source={{ uri: imageUrl }}/>
           <DetailCaption story={story} />
         </HeadlineCard>
-        <BlockTextCard>
+        <BlockTextCard testID="block-text-card">
           {story.blocks.map((block) => {
-            return <BlockText key={block.key} block={block} entityMap={story.entityMap} />
+            return <BlockText key={block.key} block={block} />
           })}
-          <Button icon="open-in-new" title="Visit Axios.com" onPress={() => Linking.openURL(axiosUrl)} />
+          <Button
+            testID="button"
+            icon="open-in-new"
+            title="Visit Axios.com"
+            onPress={() => Linking.openURL(axiosUrl)}
+          />
         </BlockTextCard>
       </ScrollView>
     </Screen>

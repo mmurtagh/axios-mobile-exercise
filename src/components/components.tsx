@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import React from 'react';
+import { TouchableOpacityProps } from 'react-native';
 
 import {
   spacing,
@@ -10,6 +11,7 @@ import {
   surfaceColor,
   primary,
 } from '../utils/styling';
+import { SafeAreaViewProps } from 'react-native-safe-area-context';
 
 const SafeAreaView = styled.SafeAreaView`
   background-color: ${backdropColor};
@@ -20,9 +22,10 @@ const Container = styled.View`
   padding-horizontal: ${spacing()};
 `;
 
-export const Screen = ({ children }) => {
+
+export const Screen = ({ children, ...rest }: SafeAreaViewProps) => {
   return (
-    <SafeAreaView>
+    <SafeAreaView {...rest}>
       <Container>
         {children}
       </Container>
@@ -65,7 +68,7 @@ const StyledIcon = styled(MaterialIcon)`
 `;
 
 export const Icon = (
-  { name, size = 30, onPress = null, color }:
+  { name, size = 30, onPress, color }:
   { name: string; size?: number, onPress?: () => any | null, color?: string }) => {
   return <StyledIcon color={color} size={size} name={name} onPress={onPress}/>
 };
@@ -85,9 +88,14 @@ const ButtonText = styled(Paragraph)`
   color: white;
 `
 
-export const Button = ({ title, onPress, icon }: { title: string, onPress: () => any, icon: string }) => {
+interface AppButtonProps extends TouchableOpacityProps {
+  title: string;
+  icon: string;
+}
+
+export const Button = ({ title, onPress, icon, ...props }: AppButtonProps) => {
   return (
-    <Touchable onPress={onPress}>
+    <Touchable onPress={onPress} {...props}>
       {icon && <Icon size={20} color="white" name={icon} />}
       <ButtonText>{title}</ButtonText>
     </Touchable>

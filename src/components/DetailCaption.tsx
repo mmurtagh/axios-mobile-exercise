@@ -15,6 +15,6 @@ export const DetailCaption = observer(({ story }: { story: Story }) => {
   const captionText = topic ? `${time} - ${topic}` : time;
 
   return (
-    <StyledCaption>{captionText}</StyledCaption>
+    <StyledCaption testID="styled-caption">{captionText}</StyledCaption>
   );
 });

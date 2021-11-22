@@ -42,6 +42,7 @@ export const StoryList = observer(() => {
   return (
     <Screen>
       <FlatList
+        testID="flatlist"
         ItemSeparatorComponent={Separator}
         data={store.stories}
         renderItem={renderItem}
@@ -49,6 +50,7 @@ export const StoryList = observer(() => {
         ListFooterComponent={Header}
         refreshControl={
           <RefreshControl
+            testID="refresh-control"
             refreshing={isRefreshing}
             onRefresh={onRefresh}
           />
