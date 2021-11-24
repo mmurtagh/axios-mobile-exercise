@@ -9,7 +9,7 @@ This is a react native project that consumes the Axios stream and content APIs t
 
 ## State Management
 
-I used `mobx` and `mobx-react-lite` for state management in this project. I maintain a store of "Stories" that can be observed by UI components. See `StoryStore.ts` and `Store.ts` for more details.
+I used `mobx` and `mobx-react-lite` for state management in this project. I maintain a store of "Stories" that can be observed by UI components. See `StoryStore.ts` and `Story.ts` for more details.
 
 ## UI
 
