@@ -6,8 +6,8 @@ const generateSizes = (ratio: '1x1' | '4x3' | '16x9'): Crop[] => {
       height: size,
       url: `Image${size}-${ratio}`,
     };
-  })
-}
+  });
+};
 
 const axiosImage: AxiosImage = {
   id: 'ABC',
@@ -21,7 +21,7 @@ const axiosImage: AxiosImage = {
     blocks: [],
     entityMap: [],
   },
-}
+};
 
 const contentInstance: AxiosContentInstance = {
   id: '1A2B3C',

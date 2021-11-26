@@ -22,6 +22,7 @@ export class StoryStore {
    * @description: Loads the most recent stories using the Axios stream and content APIs.
   */
   async loadMostRecentStories(): Promise<void> {
+    await new Promise((resolve) => setTimeout(resolve, 2000));
     const stream: AxiosStream = await this.service.getStream();
 
     const contentCalls = stream.results.map(id => {
@@ -31,7 +32,7 @@ export class StoryStore {
     const data: AxiosContentInstance[] = await Promise.all(contentCalls);
 
     runInAction(() => {
-      this.stories = data.map((story) => new Story(story))
+      this.stories = data.map((story) => new Story(story));
     });
   }
 

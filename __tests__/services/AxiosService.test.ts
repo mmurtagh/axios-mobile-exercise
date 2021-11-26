@@ -28,7 +28,7 @@ describe('AxiosService', () => {
 
   test('getContent', async () => {
     const service = new AxiosService();
-    const id = '1A2B3C'
+    const id = '1A2B3C';
     await service.getContent(id);
 
     expect(fetch).toBeCalledWith(`https://api.axios.com/api/render/content/${id}`);

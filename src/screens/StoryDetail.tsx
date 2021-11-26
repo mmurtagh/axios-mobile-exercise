@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { observer } from 'mobx-react-lite';
 import styled from 'styled-components/native';
-import { Linking } from 'react-native'
+import { Linking } from 'react-native';
 
 import { RootStackParamList, StoryStoreContext } from '../index';
 import { Button, Headline, Screen, Card, Image, Caption } from '../components/components';
@@ -10,17 +10,17 @@ import { DetailCaption } from '../components/DetailCaption';
 import { BlockText } from '../components/BlockText';
 import { fontColor, backdropColor, spacing } from '../utils/styling';
 
-export type Props = NativeStackScreenProps<RootStackParamList, 'StoryDetail'>;
+export type NavProps = NativeStackScreenProps<RootStackParamList, 'StoryDetail'>;
 
-const axiosUrl = 'https://www.axios.com/'
+const axiosUrl = 'https://www.axios.com/';
 
 const HeadlineCard = styled(Card)`
   margin-top: ${spacing()}
-`
+`;
 const ScrollView = styled.ScrollView`
   background-color: ${backdropColor};
   height: 100%;
-`
+`;
 
 const Break = styled.View`
   border-bottom-width: 1px;
@@ -35,7 +35,7 @@ const BlockTextCard = styled(Card)`
 const StoryHeadline = styled(Headline)`
   text-align: center;
   font-weight: bold;
-`
+`;
 
 const Author = styled(Caption)`
   margin-top: ${spacing('sm')};
@@ -46,12 +46,12 @@ const Author = styled(Caption)`
  * @description: Screen displaying the detail view of a story
  * @param id: The id of the story
 */
-export const StoryDetail = observer(({ route: { params: { id } } }: Props) => {
+export const StoryDetail = observer(({ route: { params: { id } } }: NavProps) => {
   const store = useContext(StoryStoreContext);
 
   const story = store.getStory(id);
 
-  if (story === null) return null
+  if (story === null) return null;
 
   const imageDescription = story.imageDescription;
   const imageSources: Crop[] = story.getImageSources('16x9');
@@ -81,7 +81,7 @@ export const StoryDetail = observer(({ route: { params: { id } } }: Props) => {
         </HeadlineCard>
         <BlockTextCard testID="block-text-card">
           {story.blocks.map((block) => {
-            return <BlockText key={block.key} block={block} />
+            return <BlockText key={block.key} block={block} />;
           })}
           <Button
             testID="button"

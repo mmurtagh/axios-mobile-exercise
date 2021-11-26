@@ -1,4 +1,4 @@
-const dayjs = jest.requireActual('dayjs');
-const relativeTime = jest.requireActual('dayjs/plugin/relativeTime');
+import * as dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 
 dayjs.extend(relativeTime);

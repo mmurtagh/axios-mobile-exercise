@@ -18,7 +18,7 @@ export class AxiosService {
       `${API_PATH}${STREAM_PATH}?page_size=${pageSize}`,
     );
 
-    return response.json();
+    return (response.json() as Promise<AxiosStream>);
   }
 
   /** 
@@ -30,6 +30,6 @@ export class AxiosService {
   async getContent(id: string): Promise<AxiosContentInstance> {
     const response = await fetch(`${API_PATH}${CONTENT_PATH}/${id}`);
 
-    return response.json();
+    return (response.json() as Promise<AxiosContentInstance>);
   }
 }

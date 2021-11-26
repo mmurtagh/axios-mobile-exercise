@@ -6,7 +6,7 @@ import { Icon, Paragraph } from './components/components';
 
 import { StoryList } from './screens/StoryList';
 import { StoryStore } from './stores/StoryStore';
-import StoryDetail from './screens/StoryDetail';
+import StoryDetail, { NavProps } from './screens/StoryDetail';
 
 export type RootStackParamList = {
   StoryList: undefined;
@@ -34,7 +34,7 @@ export default function App() {
           <Stack.Screen
             name="StoryDetail"
             component={StoryDetail}
-            options={({ navigation }) => ({
+            options={({ navigation }: NavProps) => ({
               headerTitle: () => <Paragraph accessibilityRole="header">Story Detail</Paragraph>,
               headerTitleAlign: 'center',
               headerBackVisible: false,
@@ -45,7 +45,7 @@ export default function App() {
                   accessibilityLabel="Return to latest stories"
                   size={40}
                   name="chevron-left"
-                  onPress={navigation.goBack}
+                  onPress={() => navigation.goBack()}
                 />
               ),
             })}

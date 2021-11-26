@@ -12,17 +12,17 @@ export enum SupportedBlockType {
  * @param _contentInstance: The AxiosContentInstance object that needs to be sanitized.
 */
 function sanitizeContentInstance (_contentInstance: AxiosContentInstance): AxiosContentInstance {
-  const contentInstance = { ..._contentInstance }
+  const contentInstance = { ..._contentInstance };
   const { blocks: { blocks } } = contentInstance;
 
   // Filter out all blocks with unsupported block type
   contentInstance.blocks.blocks = blocks.filter(({ type }) => {
     const supportedTypes: string[] = Object.values(SupportedBlockType);
 
-    return supportedTypes.includes(type)
-  })
+    return supportedTypes.includes(type);
+  });
 
-  return contentInstance
+  return contentInstance;
 }
 
 /** 
@@ -50,37 +50,37 @@ export class Story {
    * @description: Gets the list of image sources of a given ratio.
    * @param ratio: The desired image's aspect ratio
   */
-   getImageSources (ratio: '1x1' | '4x3' | '16x9'): Crop[] {
-    let image = this.contentInstance.primary_image
+  getImageSources (ratio: '1x1' | '4x3' | '16x9'): Crop[] {
+    let image = this.contentInstance.primary_image;
 
     if (image === null || !image.crops[ratio].sizes) {
       image = this.contentInstance.social_image;
     }
 
     if (image === null) {
-      return []
+      return [];
     }
 
-    return toJS(image.crops[ratio].sizes)
+    return toJS(image.crops[ratio].sizes);
   }
 
   get id(): string {
     return this.contentInstance.id;
   }
 
-  get author(): string | null {
+  get author(): string {
     if (!this.contentInstance.authors.length) {
-      return null;
+      return '';
     }
 
     return this.contentInstance.authors[0].display_name;
   }
 
-  get primaryTopicName(): string | null {
+  get primaryTopicName(): string {
     const topics = this.contentInstance.topics;
 
     if (topics === null || topics.length === 0) {
-      return null;
+      return '';
     }
 
     return topics[0].name;
@@ -99,20 +99,20 @@ export class Story {
    * @description: Gets a description of the image associated with the story.
   */
   get imageDescription(): string {
-    let image = this.contentInstance.primary_image
+    let image = this.contentInstance.primary_image;
 
     if (image === null) {
       image = this.contentInstance.social_image;
     }
 
     if (image === null) {
-      return ''
+      return '';
     }
 
-    const { blocks } = image.caption
+    const { blocks } = image.caption;
     
     if (blocks.length === 0) {
-      return ''
+      return '';
     }
 
     return blocks[0].text;

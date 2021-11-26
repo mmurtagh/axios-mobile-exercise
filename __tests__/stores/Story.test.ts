@@ -1,5 +1,5 @@
-import dayjs from "dayjs";
-import { Story } from "../../src/stores/Story";
+import dayjs from 'dayjs';
+import { Story } from '../../src/stores/Story';
 import contentInstance from '../data/contentInstance';
 
 describe('Story', () => {
@@ -56,14 +56,14 @@ describe('Story', () => {
       const story = new Story(contentInstance);
 
       expect(story.getImageSources('4x3')).toMatchSnapshot();
-    })
+    });
 
     test('returns [] if neither primary_image or social_image exists', () => {
       const value = { ...contentInstance };
       value.primary_image = null;
-      const story = new Story(value)
+      const story = new Story(value);
 
-      const sources = story.getImageSources('1x1')
+      const sources = story.getImageSources('1x1');
 
       expect(sources).toStrictEqual([]);
     });
@@ -74,22 +74,22 @@ describe('Story', () => {
       const story = new Story(contentInstance);
 
       expect(story.primaryTopicName).toBe('Science');
-    })
+    });
 
-    test('returns null if topics = []', () => {
-      const value = { ...contentInstance }
+    test('returns empty string if topics = []', () => {
+      const value = { ...contentInstance };
       value.topics = [];
       const story = new Story(value);
 
-      expect(story.primaryTopicName).toBe(null);
-    })
+      expect(story.primaryTopicName).toBe('');
+    });
 
-    test('returns null if topics = null', () => {
-      const value = { ...contentInstance }
+    test('returns empty string if topics = null', () => {
+      const value = { ...contentInstance };
       value.topics = null;
       const story = new Story(value);
 
-      expect(story.primaryTopicName).toBe(null);
-    })
-  })
-})
+      expect(story.primaryTopicName).toBe('');
+    });
+  });
+});

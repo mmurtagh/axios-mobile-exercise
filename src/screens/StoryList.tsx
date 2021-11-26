@@ -13,14 +13,18 @@ import { ErrorCard } from '../components/ErrorCard';
 
 const Separator = styled.View`
   padding-top: ${spacing('sm')};
-`
+`;
+
 const Header = styled.View`
   padding-top: ${spacing()};
-`
+`;
+
 const Spinner = styled.ActivityIndicator`
   padding-top: ${spacing()};
-`
-const RefreshControl = styled.RefreshControl``
+`;
+
+const RefreshControl = styled.RefreshControl``;
+
 enum LoadingState {
   LOADING,
   READY,
@@ -28,34 +32,46 @@ enum LoadingState {
   ERRORED,
 }
 
-/** 
+/**
  * @name: StoryList
  * @description: Screen displaying the list of stories
-*/
+ */
 export const StoryList = observer(() => {
   const store: StoryStore = useContext(StoryStoreContext);
-  const [ loadingState, setLoadingState ] = useState(LoadingState.LOADING)
+  const [loadingState, setLoadingState] = useState(LoadingState.LOADING);
 
   const loadStories = (state: LoadingState) => {
     setLoadingState(state);
 
-    store.loadMostRecentStories()
+    store
+      .loadMostRecentStories()
       .then(() => setLoadingState(LoadingState.READY))
-      .catch(() => setLoadingState(LoadingState.ERRORED))
-  }
+      .catch(() => setLoadingState(LoadingState.ERRORED));
+  };
 
   useEffect(() => {
-    loadStories(LoadingState.LOADING); 
+    loadStories(LoadingState.LOADING);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const renderItem = ({ item, index }: { item: Story, index: number }) => {
-    return <StoryListItem story={item} index={index} totalStories={store.stories.length} />;
+  const renderItem = ({ item, index }: { item: Story; index: number }) => {
+    return (
+      <StoryListItem
+        story={item}
+        index={index}
+        totalStories={store.stories.length}
+      />
+    );
   };
 
   return (
     <Screen>
-      {loadingState === LoadingState.LOADING && <Spinner testID="spinner" size="large"/>}
-      {loadingState === LoadingState.ERRORED && <ErrorCard onPress={() => loadStories(LoadingState.LOADING)}/>}
+      {loadingState === LoadingState.LOADING && (
+        <Spinner testID="spinner" size="large" />
+      )}
+      {loadingState === LoadingState.ERRORED && (
+        <ErrorCard onPress={() => loadStories(LoadingState.LOADING)} />
+      )}
       {loadingState !== LoadingState.ERRORED && (
         <FlatList
           testID="flatlist"

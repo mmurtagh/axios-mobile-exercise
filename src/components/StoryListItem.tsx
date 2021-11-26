@@ -4,7 +4,7 @@ import { NavigationProp, useNavigation } from '@react-navigation/native';
 import styled from 'styled-components/native';
 
 import { Story } from '../stores/Story';
-import { spacing } from '../utils/styling'
+import { spacing } from '../utils/styling';
 import { Card, Image, Paragraph, Caption } from './components';
 import { RootStackParamList } from '..';
 
@@ -24,7 +24,7 @@ const Author = styled(Caption)`
 
 const ListItem = styled(Card)`
   flex-direction: row;
-`
+`;
 
 const Touchable = styled.TouchableOpacity``;
 
@@ -42,7 +42,7 @@ export const StoryListItem = observer((
   const imageSources: Crop[] = story.getImageSources('4x3');
   const navigation: NavigationProp<RootStackParamList> = useNavigation();
 
-  const accessibilityLabel = `${index + 1} of ${totalStories}: ${story.headline} by ${story.author}`
+  const accessibilityLabel = `${index + 1} of ${totalStories}: ${story.headline} by ${story.author}`;
 
   return (
     <Touchable

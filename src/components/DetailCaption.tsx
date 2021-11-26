@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components/native'
+import React from 'react';
+import styled from 'styled-components/native';
 import { observer } from 'mobx-react-lite';
 
 import { Story } from '../stores/Story';
@@ -8,7 +8,7 @@ import { spacing } from '../utils/styling';
 
 const StyledCaption = styled(Caption)`
   padding-top: ${spacing()};
-`
+`;
 
 /** 
  * @name: DetailCaption

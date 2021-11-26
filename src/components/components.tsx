@@ -30,7 +30,7 @@ const Touchable = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-`
+`;
 
 interface AppButtonProps extends TouchableOpacityProps {
   title: string;
@@ -95,7 +95,7 @@ const ButtonText = styled(Paragraph)`
   padding-left: ${spacing('sm')};
   text-align: center;
   color: white;
-`
+`;
 
 /** 
  * @name: Screen
@@ -125,7 +125,7 @@ export const Icon = (
       name={name}
       onPress={onPress}
     />
-  )
+  );
 };
 
 /** 
@@ -138,5 +138,5 @@ export const Button = ({ title, onPress, icon, ...props }: AppButtonProps) => {
       {icon && <Icon size={20} color="white" name={icon} />}
       <ButtonText>{title}</ButtonText>
     </Touchable>
-  )
-}
+  );
+};
