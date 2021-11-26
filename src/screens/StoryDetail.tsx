@@ -44,9 +44,6 @@ const Author = styled(Caption)`
 /** 
  * @name: StoryDetail
  * @description: Screen displaying the detail view of a story
- * @param story: The story the list item represents
- * @param index: Where the story falls in the list
- * @param totalStories: The total number of stories in the list
  * @param id: The id of the story
 */
 export const StoryDetail = observer(({ route: { params: { id } } }: Props) => {
